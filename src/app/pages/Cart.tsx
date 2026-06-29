@@ -91,7 +91,7 @@ export default function Cart() {
 
       {/* Cart Content */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_350px] gap-8 lg:gap-16">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_320px] gap-6 sm:gap-8 lg:gap-12">
           {/* Cart Items */}
           <div className="space-y-4 sm:space-y-6">
             {cart.map((item, index) => (
@@ -101,10 +101,10 @@ export default function Cart() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="flex gap-6 pb-6 border-b border-border"
+                className="flex gap-3 sm:gap-6 pb-4 sm:pb-6 border-b border-border"
               >
                 {/* Product Image */}
-                <div className="w-24 h-24 bg-gray-100 flex-shrink-0 rounded">
+                <div className="w-20 sm:w-24 h-20 sm:h-24 bg-gray-100 flex-shrink-0 rounded">
                   <ResponsiveImage
                     src={item.image}
                     alt={item.name}
@@ -114,34 +114,36 @@ export default function Cart() {
                 </div>
 
                 {/* Product Details */}
-                <div className="flex-grow">
+                <div className="flex-grow min-w-0">
                   <Link
                     to={`/product/${item.id}`}
-                    className="text-lg font-semibold hover:text-[#ADD8E6] transition-colors"
+                    className="text-sm sm:text-base font-semibold hover:text-[#ADD8E6] transition-colors line-clamp-2"
                   >
                     {item.name}
                   </Link>
                   <p className="text-xs text-gray-600 mt-1">{item.colorLabel}</p>
-                  <p className="text-sm font-medium text-gray-700 mt-2">Size: UK {item.size}</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-700 mt-1">Size: UK {item.size}</p>
 
                   {/* Price */}
-                  <p className="text-lg font-bold text-[#ADD8E6] mt-3">₹{item.price}</p>
+                  <p className="text-base sm:text-lg font-bold text-[#ADD8E6] mt-2">₹{item.price}</p>
                 </div>
 
                 {/* Quantity & Actions */}
-                <div className="flex flex-col items-end justify-between">
+                <div className="flex flex-col items-end justify-between gap-3">
                   {/* Quantity Control */}
                   <div className="flex items-center border border-border rounded">
                     <button
                       onClick={() => updateCartItem(item.id, item.size, item.quantity - 1)}
-                      className="p-2 hover:bg-gray-100 transition-colors"
+                      className="p-1.5 sm:p-2 hover:bg-gray-100 transition-colors"
+                      aria-label="Decrease quantity"
                     >
                       <Minus size={16} />
                     </button>
-                    <span className="px-4 py-2 font-medium">{item.quantity}</span>
+                    <span className="px-3 sm:px-4 py-1 sm:py-2 font-medium text-sm">{item.quantity}</span>
                     <button
                       onClick={() => updateCartItem(item.id, item.size, item.quantity + 1)}
-                      className="p-2 hover:bg-gray-100 transition-colors"
+                      className="p-1.5 sm:p-2 hover:bg-gray-100 transition-colors"
+                      aria-label="Increase quantity"
                     >
                       <Plus size={16} />
                     </button>
@@ -172,32 +174,32 @@ export default function Cart() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-gray-50 p-8 rounded-lg h-fit sticky top-24"
+            className="bg-gray-50 p-6 sm:p-8 rounded-lg h-fit sticky top-16 sm:top-20"
           >
             <h3
-              className="text-2xl font-bold mb-6"
+              className="text-xl sm:text-2xl font-bold mb-6"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Order Summary
             </h3>
 
-            <div className="space-y-4 mb-6 pb-6 border-b border-border">
-              <div className="flex justify-between text-sm">
-                <span>Subtotal</span>
+            <div className="space-y-3 sm:space-y-4 mb-6 pb-6 border-b border-border">
+              <div className="flex justify-between text-xs sm:text-sm">
+                <span className="text-gray-700">Subtotal</span>
                 <span className="font-semibold">₹{subtotal}</span>
               </div>
-              <div className="flex justify-between text-sm">
-                <span>Shipping</span>
+              <div className="flex justify-between text-xs sm:text-sm">
+                <span className="text-gray-700">Shipping</span>
                 <span className={`font-semibold ${shipping === 0 ? 'text-green-600' : ''}`}>
                   {shipping === 0 ? 'FREE' : `₹${shipping}`}
                 </span>
               </div>
             </div>
 
-            <div className="flex justify-between mb-8">
-              <span className="text-lg font-bold">Total</span>
+            <div className="flex justify-between mb-6 sm:mb-8">
+              <span className="text-base sm:text-lg font-bold">Total</span>
               <span
-                className="text-2xl font-bold text-[#ADD8E6]"
+                className="text-xl sm:text-2xl font-bold text-[#ADD8E6]"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 ₹{total}
@@ -208,14 +210,14 @@ export default function Cart() {
               onClick={() => navigate('/checkout')}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB] text-white py-4 font-semibold tracking-wider uppercase hover:shadow-lg transition-shadow flex items-center justify-center gap-2 mb-4"
+              className="w-full bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB] text-white py-3 sm:py-4 font-semibold tracking-wider uppercase hover:shadow-lg transition-shadow flex items-center justify-center gap-2 mb-3 sm:mb-4 text-sm sm:text-base"
             >
               Proceed to Checkout <ArrowRight size={18} />
             </motion.button>
 
             <Link
               to="/shop"
-              className="block text-center text-sm text-[#ADD8E6] hover:text-[#87CEEB] transition-colors py-2"
+              className="block text-center text-xs sm:text-sm text-[#ADD8E6] hover:text-[#87CEEB] transition-colors py-2"
             >
               Continue Shopping
             </Link>

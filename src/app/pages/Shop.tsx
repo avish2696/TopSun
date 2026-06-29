@@ -147,7 +147,7 @@ export default function Shop() {
                 {/* Image Container */}
                 <Link to={`/product/${product.id}`} className="no-underline">
                   <div
-                    className="relative overflow-hidden aspect-square flex items-center justify-center px-3 sm:px-6 py-4 sm:py-8"
+                    className="relative overflow-hidden aspect-square flex items-center justify-center px-2 sm:px-4 py-3 sm:py-6"
                     style={{ backgroundColor: product.cardBg }}
                   >
                     <motion.div
@@ -171,7 +171,7 @@ export default function Shop() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className={`absolute top-2 sm:top-4 left-2 sm:left-4 text-[8px] sm:text-[10px] font-medium tracking-widest uppercase px-1.5 sm:px-2.5 py-0.5 sm:py-1 ${
+                        className={`absolute top-2 sm:top-4 left-2 sm:left-4 text-[9px] sm:text-[11px] font-medium tracking-widest uppercase px-2 sm:px-2.5 py-1 sm:py-1.5 ${
                           tagStyles[product.tag]
                         }`}
                       >
@@ -187,7 +187,7 @@ export default function Shop() {
                       }}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="absolute top-4 right-4 w-8 h-8 bg-white flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 sm:w-10 sm:h-10 bg-white flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-full"
                       aria-label="Add to wishlist"
                     >
                       <Heart
@@ -208,7 +208,7 @@ export default function Shop() {
                       }}
                       whileHover={{ y: -50 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`absolute bottom-0 left-0 right-0 text-white text-xs tracking-[0.15em] uppercase py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ${
+                      className={`absolute bottom-0 left-0 right-0 text-white text-[10px] sm:text-xs tracking-[0.15em] uppercase py-2 sm:py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 font-semibold ${
                         addedToCart === product.id
                           ? 'bg-green-600'
                           : 'bg-[#0c0c0c] hover:bg-[#ADD8E6]'
@@ -220,19 +220,19 @@ export default function Shop() {
                 </Link>
 
                 {/* Product Info */}
-                <div className="p-2 sm:p-5 flex flex-col gap-1.5 flex-grow">
-                  <p className="text-[10px] tracking-widest uppercase text-muted-foreground">
+                <div className="p-2 sm:p-4 flex flex-col gap-2 flex-grow">
+                  <p className="text-[9px] sm:text-[10px] tracking-widest uppercase text-muted-foreground font-medium">
                     TOPSUN · {product.category}
                   </p>
-                  <h3 className="text-sm font-semibold leading-snug">{product.name}</h3>
-                  <p className="text-[11px] text-muted-foreground">{product.colorLabel}</p>
+                  <h3 className="text-xs sm:text-sm font-semibold leading-snug">{product.name}</h3>
+                  <p className="text-[10px] sm:text-[11px] text-muted-foreground">{product.colorLabel}</p>
 
                   {/* Stars */}
-                  <div className="flex items-center gap-1 mt-0.5">
+                  <div className="flex items-center gap-1 mt-1">
                     {[...Array(5)].map((_, i) => (
                       <motion.div key={i} whileHover={{ scale: 1.2 }} transition={{ type: 'spring' }}>
                         <Star
-                          size={10}
+                          size={11}
                           className={
                             i < Math.floor(product.rating)
                               ? 'fill-[#ADD8E6] text-[#ADD8E6]'
@@ -241,7 +241,7 @@ export default function Shop() {
                         />
                       </motion.div>
                     ))}
-                    <span className="text-[10px] text-muted-foreground ml-1">
+                    <span className="text-[9px] sm:text-[10px] text-muted-foreground ml-1 font-medium">
                       {product.rating} ({product.reviews})
                     </span>
                   </div>

@@ -123,44 +123,44 @@ function CheckoutContent() {
       </section>
 
       {/* Checkout Steps Indicator */}
-      <section className="py-8 px-6 bg-gray-50 border-b border-border">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-center gap-8">
+      <section className="py-6 sm:py-8 px-4 sm:px-6 bg-gray-50 border-b border-border overflow-x-auto">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-center gap-4 sm:gap-8 min-w-max sm:min-w-0">
           {/* Step 1: Shipping */}
           <motion.div
-            className={`flex items-center gap-3 ${step === 'shipping' ? 'opacity-100' : 'opacity-50'}`}
+            className={`flex items-center gap-2 sm:gap-3 whitespace-nowrap ${step === 'shipping' ? 'opacity-100' : 'opacity-50'}`}
           >
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-white text-sm sm:text-base ${
                 step === 'shipping' ? 'bg-[#ADD8E6]' : 'bg-gray-400'
               }`}
             >
               1
             </div>
-            <span className="font-semibold">Shipping</span>
+            <span className="font-semibold text-sm sm:text-base">Shipping</span>
           </motion.div>
 
           {/* Arrow */}
-          <ArrowRight size={24} className="text-gray-400" />
+          <ArrowRight size={20} className="text-gray-400 flex-shrink-0" />
 
           {/* Step 2: Payment */}
           <motion.div
-            className={`flex items-center gap-3 ${step === 'payment' ? 'opacity-100' : 'opacity-50'}`}
+            className={`flex items-center gap-2 sm:gap-3 whitespace-nowrap ${step === 'payment' ? 'opacity-100' : 'opacity-50'}`}
           >
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-white text-sm sm:text-base ${
                 step === 'payment' ? 'bg-[#ADD8E6]' : 'bg-gray-400'
               }`}
             >
               2
             </div>
-            <span className="font-semibold">Payment</span>
+            <span className="font-semibold text-sm sm:text-base">Payment</span>
           </motion.div>
         </div>
       </section>
 
       {/* Checkout Content */}
       <section className="py-12 sm:py-16 px-4 sm:px-6">
-        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_350px] gap-8 lg:gap-16">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_320px] gap-6 sm:gap-8 lg:gap-12">
           {/* Main Form */}
           <AnimatePresence mode="wait">
             {step === 'shipping' ? (
@@ -172,23 +172,23 @@ function CheckoutContent() {
               >
                 <div className="bg-white">
                   <h2
-                    className="text-2xl font-bold mb-8"
+                    className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >
                     Shipping Address
                   </h2>
 
-                  <form onSubmit={handleShippingSubmit} className="space-y-6">
+                  <form onSubmit={handleShippingSubmit} className="space-y-4 sm:space-y-6">
                     {/* Full Name */}
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Full Name</label>
+                      <label className="block text-xs sm:text-sm font-semibold mb-2">Full Name</label>
                       <input
                         type="text"
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleInputChange}
                         placeholder="Your full name"
-                        className={`w-full px-4 py-3 border-2 transition-all focus:outline-none ${
+                        className={`w-full px-3 sm:px-4 py-2 sm:py-3 border-2 transition-all focus:outline-none text-sm ${
                           errors.fullName
                             ? 'border-red-500 bg-red-50/50'
                             : 'border-border focus:border-[#ADD8E6]'
@@ -211,17 +211,17 @@ function CheckoutContent() {
 
                     {/* Phone */}
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Phone Number</label>
+                      <label className="block text-xs sm:text-sm font-semibold mb-2">Phone Number</label>
                       <div className="relative">
-                        <span className="absolute left-4 top-3 text-gray-700 font-medium">+91</span>
+                        <span className="absolute left-3 sm:left-4 top-2 sm:top-3 text-gray-700 font-medium text-sm">+91</span>
                         <input
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder=" 95XXXXXX99"
+                          placeholder="95XXXXXX99"
                           maxLength="10"
-                          className={`w-full px-4 py-3 pl-12 border-2 transition-all focus:outline-none ${
+                          className={`w-full px-3 sm:px-4 py-2 sm:py-3 pl-10 sm:pl-12 border-2 transition-all focus:outline-none text-sm ${
                             errors.phone
                               ? 'border-red-500 bg-red-50/50'
                               : 'border-border focus:border-[#ADD8E6]'
@@ -411,19 +411,19 @@ function CheckoutContent() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="h-fit sticky top-24"
+            className="h-fit sticky top-16 sm:top-20"
           >
-            <div className="bg-gray-50 p-8 rounded-lg">
+            <div className="bg-gray-50 p-6 sm:p-8 rounded-lg">
               <h3
-                className="text-xl font-bold mb-6"
+                className="text-lg sm:text-xl font-bold mb-4 sm:mb-6"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 Order Summary
               </h3>
 
-              <div className="space-y-3 mb-6 pb-6 border-b border-border max-h-64 overflow-y-auto">
+              <div className="space-y-2 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-border max-h-56 overflow-y-auto">
                 {cart.map(item => (
-                  <div key={`${item.id}-${item.size}`} className="flex justify-between text-sm">
+                  <div key={`${item.id}-${item.size}`} className="flex justify-between text-xs sm:text-sm">
                     <span className="text-gray-600">
                       {item.name} × {item.quantity}
                     </span>
@@ -432,13 +432,13 @@ function CheckoutContent() {
                 ))}
               </div>
 
-              <div className="space-y-3 mb-6 pb-6 border-b border-border">
-                <div className="flex justify-between text-sm">
-                  <span>Subtotal</span>
+              <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-border">
+                <div className="flex justify-between text-xs sm:text-sm">
+                  <span className="text-gray-700">Subtotal</span>
                   <span className="font-semibold">₹{subtotal}</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span>Shipping</span>
+                <div className="flex justify-between text-xs sm:text-sm">
+                  <span className="text-gray-700">Shipping</span>
                   <span className={`font-semibold ${shipping === 0 ? 'text-green-600' : ''}`}>
                     {shipping === 0 ? 'FREE' : `₹${shipping}`}
                   </span>
@@ -446,9 +446,9 @@ function CheckoutContent() {
               </div>
 
               <div className="flex justify-between">
-                <span className="font-bold">Total</span>
+                <span className="font-bold text-sm sm:text-base">Total</span>
                 <span
-                  className="text-2xl font-bold text-[#ADD8E6]"
+                  className="text-lg sm:text-2xl font-bold text-[#ADD8E6]"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   ₹{total}
