@@ -10,6 +10,7 @@ import Shoe3 from '@/imports/shoe3/1.png';
 import Shoe4 from '@/imports/shoe4/1.png';
 import Shoe5 from '@/imports/shoe5/1.png';
 import Shoe6 from '@/imports/shoe6/1.png';
+import Shoe7 from '@/imports/shoe7/1.jpeg';
 
 const shoeImages: Record<number, string> = {
   1: Shoe1,
@@ -18,6 +19,7 @@ const shoeImages: Record<number, string> = {
   4: Shoe4,
   5: Shoe5,
   6: Shoe6,
+  7: Shoe7,
 };
 
 /**
@@ -32,6 +34,11 @@ export default function ProductDetailPageRoute() {
 
   // Get product from database
   const product = productId ? getProductById(parseInt(productId)) : null;
+
+  // Scroll to top when product changes
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [productId]);
 
   if (!product) {
     return (
