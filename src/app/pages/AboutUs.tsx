@@ -438,11 +438,23 @@ export default function AboutUs() {
             </div>
 
             <div>
-              <h4 className="font-semibold text-sm tracking-wide mb-4">Legal</h4>
+              <h4 className="font-semibold text-sm tracking-wide mb-4">Contact</h4>
               <ul className="space-y-2 text-xs text-gray-400">
-                <li><a href="/" className="hover:text-white transition-colors">Privacy</a></li>
-                <li><a href="/" className="hover:text-white transition-colors">Terms</a></li>
-                <li><a href="/" className="hover:text-white transition-colors">Cookies</a></li>
+                <li>Email: topsunshoes7@gmail.com</li>
+                <li>Phone: +91 7485006659</li>
+                <li className="mt-4">
+                  <a 
+                    href="https://wa.me/917485006659" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg hover:bg-[#20BA5A] transition-colors font-semibold text-xs"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.935 1.215 9.865 9.865 0 00-3.339 2.864 9.865 9.865 0 001.523 14.947 9.865 9.865 0 008.293 1.215 9.865 9.865 0 006.097-9.55 9.865 9.865 0 00-7.635-10.691z"/>
+                    </svg>
+                    Chat on WhatsApp
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
