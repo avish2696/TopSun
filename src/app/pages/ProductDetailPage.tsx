@@ -11,6 +11,7 @@ import Shoe4 from '@/imports/shoe4/1.png';
 import Shoe5 from '@/imports/shoe5/1.png';
 import Shoe6 from '@/imports/shoe6/1.png';
 import Shoe7 from '@/imports/shoe7/1.jpeg';
+import { useEffect } from 'react';
 
 const shoeImages: Record<number, string> = {
   1: Shoe1,
@@ -36,7 +37,7 @@ export default function ProductDetailPageRoute() {
   const product = productId ? getProductById(parseInt(productId)) : null;
 
   // Scroll to top when product changes
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [productId]);
 
