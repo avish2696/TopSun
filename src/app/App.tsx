@@ -751,18 +751,34 @@ export default function App() {
               </div>
             </div>
             {[
-              { heading: "Shop", links: ["Men", "Women", "Running", "Training", "Sale"] },
-              { heading: "Company", links: ["About", "Careers", "Press", "Sustainability"] },
-              { heading: "Support", links: ["FAQ", "Sizing Guide", "Returns", "Track Order"] },
+              { heading: "Shop", links: [
+                { label: "Men", href: "/shop" },
+                { label: "Women", href: "/shop" },
+                { label: "Running", href: "/shop" },
+                { label: "Training", href: "/shop" },
+                { label: "Sale", href: "/shop" },
+              ]},
+              { heading: "Company", links: [
+                { label: "About", href: "/about" },
+                { label: "Careers", href: "/careers" },
+                { label: "Press", href: "/press" },
+                { label: "Sustainability", href: "/sustainability" },
+              ]},
+              { heading: "Support", links: [
+                { label: "FAQ", href: "/faq" },
+                { label: "Sizing Guide", href: "/sizing-guide" },
+                { label: "Returns", href: "/returns" },
+                { label: "Track Order", href: "/track-order" },
+              ]},
             ].map(({ heading, links }) => (
               <div key={heading}>
                 <p className="text-white text-xs tracking-widest uppercase mb-5">{heading}</p>
                 <ul className="flex flex-col gap-3">
                   {links.map((l) => (
-                    <li key={l}>
-                      <a href="#" className="text-sm hover:text-[#ADD8E6] transition-colors">
-                        {l}
-                      </a>
+                    <li key={l.label}>
+                      <Link to={l.href} className="text-sm hover:text-[#ADD8E6] transition-colors">
+                        {l.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -772,8 +788,8 @@ export default function App() {
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
             <p>© 2025 TOPSUN. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
               <a href="#" className="hover:text-white transition-colors">Cookie Settings</a>
             </div>
           </div>

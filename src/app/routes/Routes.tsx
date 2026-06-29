@@ -16,6 +16,15 @@ const SignUp = lazy(() => import('@/app/pages/SignUp'));
 const SignIn = lazy(() => import('@/app/pages/SignIn'));
 const Profile = lazy(() => import('@/app/pages/Profile'));
 const DemoCredentials = lazy(() => import('@/app/pages/DemoCredentials'));
+const Careers = lazy(() => import('@/app/pages/Careers'));
+const Press = lazy(() => import('@/app/pages/Press'));
+const Sustainability = lazy(() => import('@/app/pages/Sustainability'));
+const FAQ = lazy(() => import('@/app/pages/FAQ'));
+const SizingGuide = lazy(() => import('@/app/pages/SizingGuide'));
+const Returns = lazy(() => import('@/app/pages/Returns'));
+const TrackOrder = lazy(() => import('@/app/pages/TrackOrder'));
+const PrivacyPolicy = lazy(() => import('@/app/pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('@/app/pages/TermsOfService'));
 
 // Initialize demo users on app start (development only)
 if (import.meta.env.DEV) {
@@ -350,6 +359,42 @@ export const router = createBrowserRouter([
     path: '/product/:productId',
     element: <Suspense fallback={<LoadingFallback />}><ProductDetailPageRoute /></Suspense>,
     errorElement: <div>Product not found</div>,
+  },
+  {
+    path: '/careers',
+    element: <Suspense fallback={<LoadingFallback />}><Careers /></Suspense>,
+  },
+  {
+    path: '/press',
+    element: <Suspense fallback={<LoadingFallback />}><Press /></Suspense>,
+  },
+  {
+    path: '/sustainability',
+    element: <Suspense fallback={<LoadingFallback />}><Sustainability /></Suspense>,
+  },
+  {
+    path: '/faq',
+    element: <Suspense fallback={<LoadingFallback />}><FAQ /></Suspense>,
+  },
+  {
+    path: '/sizing-guide',
+    element: <Suspense fallback={<LoadingFallback />}><SizingGuide /></Suspense>,
+  },
+  {
+    path: '/returns',
+    element: <Suspense fallback={<LoadingFallback />}><Returns /></Suspense>,
+  },
+  {
+    path: '/track-order',
+    element: <Suspense fallback={<LoadingFallback />}><TrackOrder /></Suspense>,
+  },
+  {
+    path: '/privacy-policy',
+    element: <Suspense fallback={<LoadingFallback />}><PrivacyPolicy /></Suspense>,
+  },
+  {
+    path: '/terms-of-service',
+    element: <Suspense fallback={<LoadingFallback />}><TermsOfService /></Suspense>,
   },
 ]);
 
