@@ -67,6 +67,13 @@ import Shoe6_3 from '@/imports/shoe6/3.png';
 import Shoe6_4 from '@/imports/shoe6/4.png';
 import Shoe6_5 from '@/imports/shoe6/5.png';
 
+import Shoe7 from '@/imports/shoe7/1.jpeg';
+import Shoe7_2 from '@/imports/shoe7/2.jpeg';
+import Shoe7_3 from '@/imports/shoe7/3.jpeg';
+import Shoe7_4 from '@/imports/shoe7/4.jpeg';
+import Shoe7_5 from '@/imports/shoe7/5.jpeg';
+import Shoe7_6 from '@/imports/shoe7/6.jpeg';
+
 // Loading fallback component
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-white">
@@ -277,6 +284,42 @@ export const PRODUCTS_DATABASE = [
       'Comfortable arch support',
       'Durable construction',
       'Versatile style',
+    ],
+    sizes: [7, 8, 9, 10],
+    outOfStockSizes: [],
+    inStock: true,
+  },
+  {
+    id: 7,
+    name: 'Apex — Premium Edition',
+    brand: 'TOPSUN',
+    category: 'Training',
+    price: 799,
+    originalPrice: 1899,
+    rating: 4.9,
+    reviews: 267,
+    tag: 'New',
+    colorLabel: 'Premium Black / White',
+    cardBg: '#f5f5f5',
+    image: Shoe7,
+    mainImage: Shoe7,
+    images: [Shoe7, Shoe7_2, Shoe7_3, Shoe7_4, Shoe7_5, Shoe7_6],
+    description:
+      'The ultimate premium training shoe. Engineered with state-of-the-art technology and premium materials, the Apex Premium Edition delivers uncompromising performance for serious athletes.',
+    material: 'Premium Engineered Mesh + Leather Upper | Advanced EVA Midsole | High-Grip Rubber Outsole',
+    fit: 'True to size. Premium padded collar for enhanced comfort.',
+    care: 'Hand wash with premium shoe cleaner. Air dry at room temperature.',
+    features: [
+      'Premium leather and mesh blend',
+      'Advanced cushioning system',
+      'Enhanced ankle support',
+      'Premium breathable materials',
+      'High-grip outsole',
+      'Reinforced stitching',
+      'Pressure-mapping insole',
+      'Professional-grade construction',
+      'Limited edition release',
+      'Certified by professional athletes',
     ],
     sizes: [7, 8, 9, 10],
     outOfStockSizes: [],
