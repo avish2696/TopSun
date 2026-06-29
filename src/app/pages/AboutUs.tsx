@@ -44,28 +44,10 @@ export default function AboutUs() {
 
   const team = [
     {
-      name: 'Arjun Kapoor',
-      role: 'Founder & Design Lead',
-      expertise: 'Footwear design, 12+ years',
-      description: 'Started TOPSUN after years of frustration with generic running shoes. Believes performance design should be beautiful.',
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'Head of Product',
-      expertise: 'Supply chain, quality control',
-      description: 'Obsessed with the details. Every prototype goes through 50+ iterations before launch.',
-    },
-    {
-      name: 'Vikram Desai',
-      role: 'Chief Operations Officer',
-      expertise: 'Manufacturing, sustainability',
-      description: 'Ensures every pair meets our standards and that our production is as eco-conscious as possible.',
-    },
-    {
-      name: 'Neha Gupta',
-      role: 'Community Manager',
-      expertise: 'Athlete relations, feedback',
-      description: 'Listens to every review. Your feedback directly shapes our next collection.',
+      name: 'Dinesh',
+      role: 'Director & CEO',
+      expertise: 'Leadership, Vision & Strategy',
+      description: 'Leading TOPSUN with a clear vision to revolutionize performance footwear. Dinesh drives innovation, quality, and excellence across all operations.',
     },
   ];
 
@@ -320,44 +302,46 @@ export default function AboutUs() {
               The People Behind TOPSUN
             </h2>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              A small, obsessive team of designers, athletes, and engineers united by one goal: making the best running shoes possible.
+              Meet Dinesh, the visionary leader driving TOPSUN's mission to create premium performance shoes for every runner.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-white rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow"
-              >
-                {/* Avatar placeholder with initials */}
-                <div className="aspect-square bg-gradient-to-br from-[#ADD8E6] to-[#87CEEB] flex items-center justify-center text-white text-4xl font-bold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </div>
+          <div className="flex justify-center">
+            <div className="w-full max-w-sm">
+              {team.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="bg-white rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow"
+                >
+                  {/* Avatar placeholder with initials */}
+                  <div className="aspect-square bg-gradient-to-br from-[#ADD8E6] to-[#87CEEB] flex items-center justify-center text-white text-4xl font-bold">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
 
-                <div className="p-6">
-                  <h3
-                    className="text-lg font-bold mb-1"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    {member.name}
-                  </h3>
-                  <p className="text-xs tracking-widest uppercase text-[#ADD8E6] font-semibold mb-3">
-                    {member.role}
-                  </p>
-                  <p className="text-xs text-gray-600 mb-3 font-medium">
-                    {member.expertise}
-                  </p>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {member.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="p-6">
+                    <h3
+                      className="text-lg font-bold mb-1"
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      {member.name}
+                    </h3>
+                    <p className="text-xs tracking-widest uppercase text-[#ADD8E6] font-semibold mb-3">
+                      {member.role}
+                    </p>
+                    <p className="text-xs text-gray-600 mb-3 font-medium">
+                      {member.expertise}
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

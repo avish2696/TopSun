@@ -155,7 +155,7 @@ export default function HeroShoe3D() {
         // During drag the user's delta is added to targetAzimuth in the event handler,
         // and we also keep incrementing it here so rotation never stops.
         if (loadedOK) {
-          targetAzimuth += 0.004;
+          targetAzimuth += 0.015; // Increased 3.75x from 0.004 for faster rotation
         }
 
         // Smooth easing towards target
@@ -307,37 +307,7 @@ export default function HeroShoe3D() {
           </div>
         </div>
 
-        {/* Corner coordinates overlay */}
-        <div style={{
-          position: "absolute", top: 16, left: 16, zIndex: 20,
-          fontSize: 8, letterSpacing: "0.1em", color: "rgba(255,255,255,0.18)",
-          lineHeight: 1.9, pointerEvents: "none",
-        }}>
-          X: 24.0 &nbsp;·&nbsp; Y: 09.5<br />
-          Z: 06.8 &nbsp;·&nbsp; θ: 0.10
-        </div>
-        <div style={{
-          position: "absolute", top: 16, right: 16, zIndex: 20,
-          fontSize: 8, letterSpacing: "0.1em", color: "rgba(255,255,255,0.18)",
-          lineHeight: 1.9, pointerEvents: "none", textAlign: "right",
-        }}>
-          JUST GO IT™<br />REV: 1.0
-        </div>
 
-        {/* Product annotations — bottom left */}
-        <div style={{
-          position: "absolute", bottom: 60, left: 16, zIndex: 20, pointerEvents: "none",
-        }}>
-          <p style={{ fontSize: 7, letterSpacing: "0.28em", color: "rgba(255,255,255,0.18)", textTransform: "uppercase", marginBottom: 8 }}>
-            Product Reference
-          </p>
-          <div style={{ fontSize: 8, lineHeight: 2, color: "rgba(255,255,255,0.14)", letterSpacing: "0.04em" }}>
-            <span style={{ color: "rgba(255,255,255,0.34)", fontWeight: 500 }}>SCAN</span>&nbsp; 19,351 vtx · 27,142 tris<br />
-            <span style={{ color: "rgba(255,255,255,0.34)", fontWeight: 500 }}>UPPER</span>&nbsp; Breathable Engineered Knit<br />
-            <span style={{ color: "rgba(255,255,255,0.34)", fontWeight: 500 }}>SOLE</span>&nbsp; High-Rebound EVA · 238g<br />
-            Sage &nbsp;·&nbsp; Petrol &nbsp;·&nbsp; Chalk
-          </div>
-        </div>
 
         {/* View angle dots — left side */}
         <div style={{
@@ -366,34 +336,7 @@ export default function HeroShoe3D() {
           ))}
         </div>
 
-        {/* Drag hint */}
-        <div style={{
-          position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)",
-          zIndex: 20, fontSize: 8, letterSpacing: "0.22em", color: "rgba(255,255,255,0.22)",
-          textTransform: "uppercase", pointerEvents: "none",
-          display: "flex", alignItems: "center", gap: 6,
-        }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ opacity: 0.5 }}>
-            <path d="M21 12a9 9 0 1 1-9-9" />
-            <path d="M21 3v4h-4" />
-          </svg>
-          Drag to rotate
-        </div>
 
-        {/* Live status bar */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 20,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "8px 16px", borderTop: "1px solid rgba(255,255,255,0.05)",
-        }}>
-          <span style={{ fontSize: 7, letterSpacing: "0.18em", color: "rgba(255,255,255,0.18)", textTransform: "uppercase" }}>
-            © 2026 — Topsun Sport
-          </span>
-          <span style={{ fontSize: 7, letterSpacing: "0.18em", color: "rgba(255,255,255,0.18)", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block", animation: "blink 2.2s ease-in-out infinite" }} />
-            3D Scan Render: Active
-          </span>
-        </div>
       </div>
 
       <style>{`

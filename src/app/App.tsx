@@ -1,5 +1,5 @@
 import Header from '@/app/components/Header';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ShoppingBag, Search, ArrowRight, Heart, Star, Instagram, Twitter, Youtube, X } from "lucide-react";
 import { motion } from "motion/react";
@@ -112,6 +112,64 @@ const tagStyles: Record<string, string> = {
 };
 
 const filters = ["All", "Running", "Training"];
+
+// Animated Hero Heading Component
+function AnimatedHeroHeading() {
+  const headings = [
+    "Apex Performance",
+    "Step Into Excellence",
+    "Built for Champions",
+    "Engineered to Dominate",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % headings.length);
+    }, 4000); // Change every 4 seconds
+    return () => clearInterval(interval);
+  }, [headings.length]);
+
+  return (
+    <div className="relative h-full flex items-center justify-start md:justify-start">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, y: 20, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.8 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="w-full"
+        >
+          <motion.span
+            initial={{ backgroundPosition: "0% center" }}
+            animate={{ backgroundPosition: "100% center" }}
+            transition={{ duration: 2, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+            className="inline-block bg-gradient-to-r from-white via-[#ADD8E6] to-white bg-[length:200%_auto] text-transparent bg-clip-text"
+          >
+            {headings[currentIndex]}
+          </motion.span>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Progress indicator dots */}
+      <div className="absolute bottom-0 left-0 flex gap-1.5 mt-3">
+        {headings.map((_, idx) => (
+          <motion.div
+            key={idx}
+            animate={{
+              scaleX: idx === currentIndex ? 1 : 0.5,
+              opacity: idx === currentIndex ? 1 : 0.4,
+            }}
+            transition={{ duration: 0.3 }}
+            className="h-0.5 w-2 bg-[#ADD8E6] rounded-full origin-left"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   const [cartCount, setCartCount] = useState(0);
@@ -247,130 +305,83 @@ export default function App() {
       />
 
       {/* HERO */}
-      <section className="pt-16 min-h-screen overflow-hidden relative bg-gradient-to-br from-[#0c0c0c] via-[#1a1a1a] to-[#0c0c0c]">
+      <section className="pt-12 pb-12 md:pt-0 md:pb-0 md:min-h-screen overflow-hidden relative bg-gradient-to-br from-[#0c0c0c] via-[#1a1a1a] to-[#0c0c0c]">
         
-        {/* Giant Background Logo - Hidden on mobile */}
-        <div className="hidden lg:flex absolute inset-0 items-center justify-center overflow-hidden pointer-events-none z-0">
+        {/* Background Text */}
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none opacity-5 md:opacity-10">
           <span 
-            className="text-[50rem] font-black text-transparent select-none tracking-tighter whitespace-nowrap translate-x-20"
-            style={{ 
-              fontFamily: "'Inter', sans-serif",
-              WebkitTextStroke: '6px rgba(255, 255, 255, 0.08)' 
-            }}
+            className="text-[8rem] md:text-[15rem] font-black text-white select-none tracking-tighter whitespace-nowrap"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             TOPSUN
           </span>
         </div>
 
-        {/* Animated Overlay with Motion */}
-        <motion.div 
-          className="fixed inset-0 -z-10 bg-gradient-to-r from-[#0c0c0c] via-[#0c0c0c]/60 to-transparent"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ pointerEvents: 'none' }}
-        />
-        
-        {/* Floating Shapes Animation */}
-        <motion.div
-          className="fixed top-20 right-20 w-72 h-72 rounded-full opacity-10 -z-10"
-          style={{
-            background: 'radial-gradient(circle, #ADD8E6 0%, transparent 70%)',
-            pointerEvents: 'none'
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div
-          className="fixed bottom-10 left-10 w-96 h-96 rounded-full opacity-5 -z-10"
-          style={{
-            background: 'radial-gradient(circle, #87CEEB 0%, transparent 70%)',
-            pointerEvents: 'none'
-          }}
-          animate={{
-            y: [0, 40, 0],
-            x: [0, -30, 0]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5
-          }}
-        />
-        
-        {/* Content Container - Scrolls normally */}
-        <div className="relative z-10 grid lg:grid-cols-[1fr_1fr] min-h-screen">
-        {/* Left copy */}
-        <div className="flex flex-col justify-center px-8 lg:px-16 xl:px-24 py-20 lg:py-0 order-2 lg:order-1">
+        {/* Content Container */}
+        <div className="relative z-10 flex flex-col md:grid md:grid-cols-[1fr_1fr] h-auto md:min-h-screen items-center">
+          
+          {/* Left Text - Mobile Top, Desktop Left */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-8 flex items-center gap-4"
+            className="px-6 md:px-16 py-4 md:py-0 text-center md:text-left order-2 md:order-1"
           >
-            <span>001</span>
-            <span className="w-12 h-[1px] bg-gray-700"></span>
-            <span>Physical Coordinates</span>
-          </motion.div>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs text-gray-400 max-w-sm leading-[2.2] tracking-[0.1em] uppercase mb-12"
-          >
-            Designing strict parametric outsoles and anatomical bio-sculpts. A modern standard for spatial movement and ergonomic footbeds.
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <motion.a
-              href="#products"
-              whileHover={{ x: 5 }}
-              className="inline-flex items-center text-[10px] tracking-[0.2em] uppercase text-white font-medium hover:text-gray-300 transition-colors duration-300 pb-1 border-b border-white/20 hover:border-gray-300"
+            <motion.div className="text-[9px] tracking-[0.3em] uppercase text-[#ADD8E6] mb-2 inline-block md:block">
+              New Collection 2026
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="text-2xl md:text-5xl font-black text-white mb-3 leading-tight min-h-[60px] md:min-h-[80px]"
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Explore Core Collection
-            </motion.a>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-16 text-[10px] tracking-[0.4em] uppercase text-gray-600 font-mono"
-          >
-            R.DO 0 3 7<br/>
-            0 2 0
-          </motion.div>
-        </div>
+              <AnimatedHeroHeading />
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-xs md:text-sm text-gray-300 max-w-sm mx-auto md:mx-0 leading-relaxed mb-6"
+            >
+              Engineered precision meets timeless style. Built for champions, crafted for you.
+            </motion.p>
 
-        {/* Right side — 3D Interactive Shoe Viewer */}
-        <div className="order-1 lg:order-2 flex items-center justify-center">
-          <HeroShoe3D />
-        </div>
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ delay: 0.3 }}
+              onClick={() => navigate('/shop')}
+              className="px-8 py-3 bg-gradient-to-r from-[#ADD8E6] to-[#87CEEB] text-white font-bold text-xs tracking-widest uppercase rounded-lg hover:shadow-lg transition-all"
+            >
+              Shop Now
+            </motion.button>
+          </motion.div>
+
+          {/* 3D Model - Mobile Full, Desktop Right */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="w-full md:w-auto flex items-center justify-center order-1 md:order-2 py-4 md:py-0"
+          >
+            <div className="w-full max-w-xs md:max-w-none md:w-96 h-80 md:h-[600px] relative">
+              <HeroShoe3D />
+            </div>
+          </motion.div>
         </div>
       </section>
 
 
       {/* SCROLLING PRODUCT GALLERY */}
-      <section className="bg-[#050505] py-12 border-t border-white/5 overflow-hidden">
+      <section className="bg-[#050505] py-6 border-t border-white/5 overflow-hidden">
         <div className="px-6 md:px-12 mb-8 max-w-[1400px] mx-auto">
           <div className="flex justify-between items-end">
             <div>
@@ -391,26 +402,30 @@ export default function App() {
             }}
           >
             {[...products, ...products, ...products, ...products].map((p, i) => (
-              <div 
-                key={`${p.id}-${i}`} 
-                className="relative w-[360px] h-[200px] shrink-0 bg-gradient-to-br from-[#2a2a2a] to-[#111111] overflow-hidden group/card cursor-pointer"
-                onClick={() => addToCart(p)}
+              <Link
+                key={`${p.id}-${i}`}
+                to={`/product/${p.id}`}
+                className="no-underline"
               >
-                {/* Dark gradient overlay for text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                
-                <img 
-                  src={p.image} 
-                  alt={p.name} 
-                  className="absolute inset-0 w-full h-full p-2 scale-110 object-contain object-center opacity-80 group-hover/card:opacity-100 group-hover/card:scale-125 transition-all duration-700 grayscale group-hover/card:grayscale-0" 
-                />
-                
-                <div className="absolute bottom-4 left-4 z-20">
-                  <p className="text-[9px] tracking-[0.2em] uppercase text-gray-300 border border-white/20 bg-black/20 backdrop-blur-sm px-3 py-1.5 inline-block">
-                    {p.name.split('—')[0].trim()}
-                  </p>
+                <div 
+                  className="relative w-[360px] h-[200px] shrink-0 bg-gradient-to-br from-[#2a2a2a] to-[#111111] overflow-hidden group/card cursor-pointer"
+                >
+                  {/* Dark gradient overlay for text legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+                  
+                  <img 
+                    src={p.image} 
+                    alt={p.name} 
+                    className="absolute inset-0 w-full h-full p-2 scale-110 object-contain object-center opacity-80 group-hover/card:opacity-100 group-hover/card:scale-125 transition-all duration-700 grayscale group-hover/card:grayscale-0" 
+                  />
+                  
+                  <div className="absolute bottom-4 left-4 z-20">
+                    <p className="text-[9px] tracking-[0.2em] uppercase text-gray-300 border border-white/20 bg-black/20 backdrop-blur-sm px-3 py-1.5 inline-block">
+                      {p.name.split('—')[0].trim()}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </motion.div>
         </div>
@@ -437,7 +452,7 @@ export default function App() {
       </div>
 
       {/* PRODUCTS */}
-      <section id="products" className="py-24 px-6 max-w-[1400px] mx-auto">
+      <section id="products" className="py-12 px-6 max-w-[1400px] mx-auto">
         <div className="mb-12">
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-3">
             All Styles
@@ -583,7 +598,7 @@ export default function App() {
       </section>
 
       {/* BRAND STATEMENT */}
-      <section className="bg-[#0c0c0c] text-white py-28 px-6">
+      <section className="bg-[#0c0c0c] text-white py-16 px-6">
         <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
           <div>
             <p className="text-xs tracking-[0.35em] uppercase text-[#ADD8E6] mb-8">
@@ -633,7 +648,7 @@ export default function App() {
       </section>
 
       {/* ALL 6 — Colorway Picker Showcase */}
-      <section className="py-24 px-6 max-w-[1400px] mx-auto">
+      <section className="py-12 px-6 max-w-[1400px] mx-auto">
         <div className="mb-12 text-center">
           <p className="text-xs tracking-[0.35em] uppercase text-muted-foreground mb-3">
             6 Colorways
@@ -677,7 +692,7 @@ export default function App() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="bg-[#f5f4f1] py-20 px-6">
+      <section className="bg-[#f5f4f1] py-12 px-6">
         <div className="max-w-xl mx-auto text-center">
           <p className="text-xs tracking-[0.35em] uppercase text-[#ADD8E6] mb-4">Stay in the Loop</p>
           <h2
@@ -710,7 +725,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#0c0c0c] text-white/70 py-16 px-6">
+      <footer className="bg-[#0c0c0c] text-white/70 py-8 px-6">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-16">
             <div>
