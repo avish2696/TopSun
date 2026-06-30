@@ -134,9 +134,9 @@ export default function Shop() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-3 sm:px-6">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-1 sm:gap-2 md:gap-3 bg-border">
             {sortedProducts.map((product, index) => (
               <motion.div
                 key={product.id}
