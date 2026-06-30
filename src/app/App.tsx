@@ -740,72 +740,154 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#0c0c0c] text-white/70 py-8 px-6">
+      <footer className="bg-[#0c0c0c] text-white/70 py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-16">
-            <div>
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-12">
+            {/* Brand Column */}
+            <div className="col-span-2 sm:col-span-1">
               <p
-                className="text-2xl font-black tracking-[0.2em] text-white mb-4"
+                className="text-xl sm:text-2xl font-black tracking-[0.2em] text-white mb-3 sm:mb-4"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 TOPSUN
               </p>
-              <p className="text-sm leading-relaxed max-w-xs">
+              <p className="text-xs sm:text-sm leading-relaxed max-w-xs mb-4 sm:mb-6">
                 Performance footwear for those who move with intention. Genuine quality. Unbeatable price.
               </p>
-              <div className="flex gap-4 mt-6">
-                {[Instagram, Twitter, Youtube].map((Icon, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-[#ADD8E6] hover:text-[#ADD8E6] transition-colors"
-                  >
-                    <Icon size={14} />
-                  </a>
-                ))}
+              
+              {/* Social Links */}
+              <div className="flex gap-3 sm:gap-4">
+                <a
+                  href="https://www.instagram.com/top_sunshoes7?igsh=MXNnc3Q1NGFiam0wMw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-[#ADD8E6] hover:text-[#ADD8E6] hover:bg-[#ADD8E6]/10 transition-all"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={14} />
+                </a>
+                <a
+                  href="https://www.facebook.com/share/16mU9mdDvs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-[#ADD8E6] hover:text-[#ADD8E6] hover:bg-[#ADD8E6]/10 transition-all"
+                  aria-label="Facebook"
+                >
+                  <X size={14} />
+                </a>
+                <a
+                  href="https://wa.me/917485006659"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 border border-white/20 flex items-center justify-center hover:border-[#25D366] hover:text-[#25D366] hover:bg-[#25D366]/10 transition-all"
+                  aria-label="WhatsApp"
+                >
+                  <Youtube size={14} />
+                </a>
               </div>
             </div>
-            {[
-              { heading: "Shop", links: [
-                { label: "Men", href: "/shop" },
-                { label: "Women", href: "/shop" },
-                { label: "Running", href: "/shop" },
-                { label: "Training", href: "/shop" },
-                { label: "Sale", href: "/shop" },
-              ]},
-              { heading: "Company", links: [
-                { label: "About", href: "/about" },
-                { label: "Careers", href: "/careers" },
-                { label: "Press", href: "/press" },
-                { label: "Sustainability", href: "/sustainability" },
-              ]},
-              { heading: "Support", links: [
-                { label: "FAQ", href: "/faq" },
-                { label: "Sizing Guide", href: "/sizing-guide" },
-                { label: "Returns", href: "/returns" },
-                { label: "Track Order", href: "/track-order" },
-              ]},
-            ].map(({ heading, links }) => (
-              <div key={heading}>
-                <p className="text-white text-xs tracking-widest uppercase mb-5">{heading}</p>
-                <ul className="flex flex-col gap-3">
-                  {links.map((l) => (
-                    <li key={l.label}>
-                      <Link to={l.href} className="text-sm hover:text-[#ADD8E6] transition-colors">
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+
+            {/* Shop Column */}
+            <div>
+              <p className="text-white text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-5 font-semibold">Shop</p>
+              <ul className="flex flex-col gap-2 sm:gap-3">
+                {[
+                  { label: "All Products", href: "/shop" },
+                  { label: "Running", href: "/shop" },
+                  { label: "Training", href: "/shop" },
+                  { label: "Sale", href: "/shop" },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.href} className="text-xs sm:text-sm hover:text-[#ADD8E6] transition-colors">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company Column */}
+            <div>
+              <p className="text-white text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-5 font-semibold">Company</p>
+              <ul className="flex flex-col gap-2 sm:gap-3">
+                {[
+                  { label: "About", href: "/about" },
+                  { label: "Careers", href: "/careers" },
+                  { label: "Press", href: "/press" },
+                  { label: "Sustainability", href: "/sustainability" },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.href} className="text-xs sm:text-sm hover:text-[#ADD8E6] transition-colors">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support Column */}
+            <div>
+              <p className="text-white text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-5 font-semibold">Support</p>
+              <ul className="flex flex-col gap-2 sm:gap-3">
+                {[
+                  { label: "FAQ", href: "/faq" },
+                  { label: "Sizing Guide", href: "/sizing-guide" },
+                  { label: "Returns", href: "/returns" },
+                  { label: "Track Order", href: "/track-order" },
+                ].map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.href} className="text-xs sm:text-sm hover:text-[#ADD8E6] transition-colors">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <p className="text-white text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-5 font-semibold">Contact</p>
+              <ul className="flex flex-col gap-2 sm:gap-3">
+                <li>
+                  <a href="mailto:topsunshoes7@gmail.com" className="text-xs sm:text-sm hover:text-[#ADD8E6] transition-colors">
+                    topsunshoes7@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+917485006659" className="text-xs sm:text-sm hover:text-[#ADD8E6] transition-colors">
+                    +91 7485006659
+                  </a>
+                </li>
+                <li className="pt-2">
+                  <a 
+                    href="https://wa.me/917485006659"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs sm:text-sm text-[#25D366] hover:text-[#20BA5A] transition-colors font-semibold"
+                  >
+                    Message on WhatsApp
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-            <p>© 2025 TOPSUN. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
-              <a href="#" className="hover:text-white transition-colors">Cookie Settings</a>
+
+          {/* Footer Bottom */}
+          <div className="border-t border-white/10 pt-6 sm:pt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs sm:text-sm">
+              <p className="order-2 sm:order-1">© 2025 TOPSUN Performance Sneakers. All rights reserved.</p>
+              <div className="flex flex-wrap gap-3 sm:gap-6 order-1 sm:order-2">
+                <Link to="/privacy-policy" className="hover:text-[#ADD8E6] transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link to="/terms-of-service" className="hover:text-[#ADD8E6] transition-colors">
+                  Terms of Service
+                </Link>
+                <a href="#" className="hover:text-[#ADD8E6] transition-colors">
+                  Cookie Settings
+                </a>
+              </div>
             </div>
           </div>
         </div>
