@@ -16,6 +16,7 @@ import Shoe3 from "@/imports/shoe3/1.png";
 import Shoe4 from "@/imports/shoe4/1.png";
 import Shoe5 from "@/imports/shoe5/1.png";
 import Shoe6 from "@/imports/shoe6/1.png";
+import Shoe7 from "@/imports/shoe7/1.jpeg";
 
 const products = [
   {
@@ -101,6 +102,20 @@ const products = [
     alt: "TOPSUN Apex sneaker in white, orange and tan colorway",
     colorLabel: "White / Amber",
     cardBg: "#fef4e6",
+  },
+  {
+    id: 7,
+    name: "Apex — Premium Edition",
+    category: "Training",
+    price: 599,
+    originalPrice: 1599,
+    rating: 4.9,
+    reviews: 267,
+    tag: "New",
+    image: Shoe7,
+    alt: "TOPSUN Apex Premium Edition sneaker in black and white colorway",
+    colorLabel: "Premium Black / White",
+    cardBg: "#f5f5f5",
   },
 ];
 
@@ -647,11 +662,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* ALL 6 — Colorway Picker Showcase */}
+      {/* ALL 7 — Colorway Picker Showcase */}
       <section className="py-12 px-6 max-w-[1400px] mx-auto">
         <div className="mb-12 text-center">
           <p className="text-xs tracking-[0.35em] uppercase text-muted-foreground mb-3">
-            6 Colorways
+            7 Colorways
           </p>
           <h2
             className="text-[clamp(2rem,4vw,3.5rem)] font-bold"
@@ -660,11 +675,11 @@ export default function App() {
             Pick Your Pair
           </h2>
           <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto leading-relaxed">
-            Same iconic TOPSUN silhouette. Six distinct identities. All ₹599 — while stock lasts.
+            Same iconic TOPSUN silhouette. Seven distinct identities. All ₹599 — while stock lasts.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3">
           {products.map((p) => (
             <button
               key={p.id}
